@@ -52,7 +52,7 @@ public class MainController {
             response.addCookie(cookie2);
 
             if(usuario.isAdmin()){
-                template = "showGraphs";
+                template = "redirect:/showGraficos";
             } else {
                 template = "showEncuestas";
             }
@@ -97,17 +97,17 @@ public class MainController {
         int qOne3 = 0;
         int qOne4 = 0;
         int qOne5 = 0;
-        for (Encuesta encuesta: questions) {
-            if(encuesta.getQuestionOne() == 1){
+        for(int i = 0; i < questions.size(); i++){
+            if(questions.get(i).getQuestionOne() == 1) {
                 qOne1 += 1;
             }
-            else if(encuesta.getQuestionOne() == 2){
+            else if(questions.get(i).getQuestionOne() == 2){
                 qOne2 += 1;
             }
-            else if(encuesta.getQuestionOne() == 3){
+            else if(questions.get(i).getQuestionOne() == 3){
                 qOne3 += 1;
             }
-            else if(encuesta.getQuestionOne() == 4){
+            else if(questions.get(i).getQuestionOne() == 4){
                 qOne4 += 1;
             } else {
                 qOne5 += 1;
@@ -121,39 +121,39 @@ public class MainController {
         graphDataQ1.put("5", qOne5);
 
         model.addAttribute("questionOne", graphDataQ1);
-/*
+
         //---------------->  Q2:
         int qTwo1 = 0;
         int qTwo2 = 0;
         int qTwo3 = 0;
         int qTwo4 = 0;
         int qTwo5 = 0;
-        for (Encuesta encuesta: questions) {
-            if(encuesta.getQuestionTwo() == 1){
+        for(int i = 0; i < questions.size(); i++){
+            if(questions.get(i).getQuestionTwo() == 1){
                 qTwo1 += 1;
             }
-            else if(encuesta.getQuestionTwo() == 2){
+            else if(questions.get(i).getQuestionTwo() == 2){
                 qTwo2 += 1;
             }
-            else if(encuesta.getQuestionTwo() == 3){
+            else if(questions.get(i).getQuestionTwo() == 3){
                 qTwo3 += 1;
             }
-            else if(encuesta.getQuestionTwo() == 4){
+            else if(questions.get(i).getQuestionTwo() == 4){
                 qTwo4 += 1;
             } else {
                 qTwo5 += 1;
             }
         }
         Map<String, Integer> graphDataQ2 = new TreeMap<>();
-        graphDataQ1.put("1", qTwo1);
-        graphDataQ1.put("2", qTwo2);
-        graphDataQ1.put("3", qTwo3);
-        graphDataQ1.put("4", qTwo4);
-        graphDataQ1.put("5", qTwo5);
+        graphDataQ2.put("1", qTwo1);
+        graphDataQ2.put("2", qTwo2);
+        graphDataQ2.put("3", qTwo3);
+        graphDataQ2.put("4", qTwo4);
+        graphDataQ2.put("5", qTwo5);
 
         model.addAttribute("questionTwo", graphDataQ2);
 
-        //---------------->  Q4:
+        //---------------->  Q3:
         int qThree1 = 0;
         int qThree2 = 0;
         int qThree3 = 0;
@@ -176,18 +176,18 @@ public class MainController {
             }
         }
         Map<String, Integer> graphDataQ3 = new TreeMap<>();
-        graphDataQ1.put("1", qThree1);
-        graphDataQ1.put("2", qThree2);
-        graphDataQ1.put("3", qThree3);
-        graphDataQ1.put("4", qThree4);
-        graphDataQ1.put("5", qThree5);
+        graphDataQ3.put("1", qThree1);
+        graphDataQ3.put("2", qThree2);
+        graphDataQ3.put("3", qThree3);
+        graphDataQ3.put("4", qThree4);
+        graphDataQ3.put("5", qThree5);
 
         model.addAttribute("questionThree", graphDataQ3);
 
         //---------------->  Q4:
         List<String> comentarios = encuestaServices.getComments();
         model.addAttribute("questionFour", comentarios);
-*/
+
         return "showGraphs";
     }
 

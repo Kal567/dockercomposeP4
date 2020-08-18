@@ -5,8 +5,7 @@ import com.pucmm.compose.repositories.EncuestaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class EncuestaServices {
@@ -39,7 +38,7 @@ public class EncuestaServices {
 
     //GET ALL COMMENTS
     public List<String> getComments(){
-        List<String> comentarios = null;
+        List<String> comentarios = new ArrayList<>();
         for (Encuesta encuesta : allEncuestas()){
             comentarios.add(encuesta.getQuestionFour());
         }
