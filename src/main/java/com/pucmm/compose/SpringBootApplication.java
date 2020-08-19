@@ -1,12 +1,15 @@
 package com.pucmm.compose;
 
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import javax.sql.DataSource;
 
 @org.springframework.boot.autoconfigure.SpringBootApplication
+@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
 public class SpringBootApplication {
     public SpringBootApplication() {
     }
@@ -14,7 +17,7 @@ public class SpringBootApplication {
     public static void main(String[] args) {
         SpringApplication.run(SpringBootApplication.class, args);
     }
-
+/*
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
@@ -25,5 +28,5 @@ public class SpringBootApplication {
         dataSource.setUrl("jdbc:mysql://localhost:3306/barcampcomposedb");
 
         return dataSource;
-    }
+    }*/
 }
